@@ -21,7 +21,7 @@ window.addEventListener("load", () => {
       // بعد انتهاء الحركة أخفي العنصر نهائياً
       setTimeout(()=>{ splash.style.display = "none"; }, 1000);
     }, 500);
-  }, 3000);
+  }, 1000);
 
   // فعل أزرار اللغة
   const btnAr = document.getElementById("lang-ar");
@@ -348,6 +348,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
 
 
 });
