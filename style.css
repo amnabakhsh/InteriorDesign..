@@ -27,6 +27,7 @@ body { font-family: Arial, sans-serif; color:#d7d6b9; line-height:1.6; text-alig
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: -1;
+    background: black; تحسبا لو تاخر الفيديو
 }
 
 /* افتراضيًا، خلّي الفيديو العرضي يشتغل */
@@ -304,4 +305,5 @@ footer {
     text-align: center;      /* نص الزر في المنتصف */
     margin: 5px 0;           /* مسافة بسيطة فوق وتحت */
   }
+
 }
