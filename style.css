@@ -307,3 +307,24 @@ footer {
   }
 
 }
+
+
+
+/* السهم يظهر فقط على الجوال */
+@media screen and (max-width: 768px) {
+  .sub-images::after {
+    content: '→'; /* سهم يشير لليمين */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: rgba(0,0,0,0.5);
+    pointer-events: none; /* لا يمنع النقر على الصور */
+  }
+
+  .sub-images {
+    position: relative; /* لازم للسهم */
+  }
+}
+
