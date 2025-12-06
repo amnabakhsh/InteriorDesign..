@@ -84,7 +84,7 @@ header {
 
 /* الصفحة الرئيسية */
 #home { display:flex; justify-content:center; align-items:center; height:100vh; }
-#home h1 { font-size:60px; opacity:0; transform: translateY(40px); text-align:center; transition:1s ease;   font-family: "Amiri", serif;}
+#home h1 { font-size:50px; opacity:0; transform: translateY(40px); text-align:center; transition:1s ease;   font-family: "Amiri", serif;}
 
 /* صفحة About */
 .about-section { background: rgba(100,54,45,0.6); padding:60px 20px; text-align:center;   font-family: "Lateef", serif;}
@@ -92,7 +92,7 @@ header {
 
 #about p {
     font-family: "Tajawal", sans-serif;
-  font-size: 23px;   /* حجم الخط */
+  font-size: 21px;   /* حجم الخط */
   line-height: 1.8;  /* مسافة بين السطور */
   color: #d7d6b9;
   text-align: center;
@@ -363,6 +363,7 @@ footer {
 .sub-images img.active {
   opacity: 1;
 }
+
 
 
 
