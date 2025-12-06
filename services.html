@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,61 +8,13 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; font-family: Arial, sans-serif; color: #d7d6b9; overflow-x: hidden; }
 
+
+
 .video-bg { position: fixed; top:0; left:0; width:100%; height:100%; object-fit: cover; z-index: -3; }
 @media (max-width: 767px) { .video-desktop { display: none; } .video-mobile { display: block; } }
 @media (min-width: 768px) { .video-desktop { display: block; } .video-mobile { display: none; } }
 
-/* === تعديل الهيدر فقط === */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  padding: 10px 20px;
-  background: rgba(100,54,45,0.9);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  direction: ltr;
-}
 
-header .logo { order: 0; }
-header .logo img { height: 75px; }
-
-header nav {
-  order: 1;
-  display: flex;
-  gap: 10px;
-}
-
-nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #d7d6b9;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-nav a:hover { color: #fff; }
-
-/* --- أزرار التنقل متجاوبة حسب الشاشة --- */
-@media (max-width: 768px) {
-  header nav {
-    display: flex;
-    flex-direction: column; /* تصير الأزرار تحت بعض */
-    align-items: center;    /* في المنتصف */
-    gap: 7px;              /* مسافة بين الأزرار */
-  }
-
-  header nav a {
-    display: block;          /* كل زر ياخذ سطر كامل */
-    width: 80%;              /* عرض الزر */
-    text-align: center;      /* نص الزر في المنتصف */
-    margin: 5px 0;           /* مسافة بسيطة فوق وتحت */
-  }
-}
-/* === نهاية تعديل الهيدر === */
 
 /* إزالة padding الضخم */
 .overlay { position: relative; background: rgba(50, 30, 20, 0.3); }
@@ -78,9 +30,10 @@ nav a:hover { color: #fff; }
 
 /* عنوان الخدمات داخل الخلفية الغامقة */
 .services-bg h1 {
-  font-size: 45px;
+  font-size: 50px;
   text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
   margin-bottom: 30px;
+  font-family: "Lateef", serif;
 }
 
 /* محتوى الصور داخل الخلفية */
@@ -89,8 +42,8 @@ nav a:hover { color: #fff; }
 .service-box:hover { transform:scale(1.05); }
 .service-box img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter:brightness(70%); transition: filter 0.3s ease; }
 .service-box:hover img { filter:brightness(85%); }
-.service-box h3 { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);  color: #D7D6B9;
-text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); padding:10px 15px; border-radius:5px; font-size:40px; text-align:center; }
+.service-box h3 { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);  color: #D7D6B9; font-family: "Lateef", serif;
+text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); padding:10px 15px; border-radius:5px; font-size:50px; text-align:center; }
 
 
 
@@ -103,9 +56,12 @@ footer button:hover { background-color:#64362d; color:#d7d6b9; }
 </head>
 <body>
 
+
+
+
 <!-- فيديو الكمبيوتر -->
 <video class="video-bg video-desktop" autoplay muted loop playsinline>
-  <source src="./works/سكن العز-Unnamed-Roaming video-20251024-020815.mp4" type="video/mp4">
+  <source src="./IMG_2632.MP4" type="video/mp4">
 </video>
 
 <!-- فيديو الجوال -->
@@ -114,18 +70,119 @@ footer button:hover { background-color:#64362d; color:#d7d6b9; }
 </video>
 
 <!-- الهيدر -->
-<header>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>موقعي</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; /* انتقال سلس */
+}
+
+.logo img {
+height: 70px; 
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:rgba(100, 54, 45, 0.9);
+  color: #d7d6b9;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: none; /* مخفية افتراضياً */
+  flex-direction: column; /* عمودي */
+  background-color: rgba(100, 54, 45, 0.9);
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+}
+
+.navbar ul li {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.navbar ul li a {
+  color: #d7d6b9;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.hamburger {
+  display: flex; 
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: #d7d6b9;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+.navbar ul.show {
+  display: flex;
+}
+
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
   <div class="logo">
-    <a href="index.html"><img src="./works/amna logo-06.png" alt="Logo"></a>
+
+    <img src="./works/amna logo-06.png" alt="logo" style="height: 60px">
   </div>
-  <nav>
-   
-    <a href="index.html" data-ar="الصفحة الرئيسية" data-en="Home">الصفحة الرئيسية</a>
-     <a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
-    
-  
-  </nav>
-</header>
+  <ul>
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="services.html">خدماتنا</a></li>
+    <li><a href="contact">تواصل معنا</a></li>
+  </ul>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+
+
+<script>
+// التحكم بأيقونة الهامبرغر
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.navbar ul');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+</script>
+
+</body>
+</html>
 
 <!-- المحتوى -->
 <div class="overlay">
@@ -145,8 +202,8 @@ footer button:hover { background-color:#64362d; color:#d7d6b9; }
         <h3 data-ar="مخططات تنفيذية" data-en="Construction Drawings">مخططات تنفيذية </h3>
       </div>
       <div class="service-box">
-        <img src="./works/work10-8.jfif" alt="تأثيث ">
-        <h3 data-ar="تأثيث" data-en="Furnishing">تأثيث </h3>
+        <img src="./works/work10-8.jfif" alt="استشارات">
+        <h3 data-ar="استشارات" data-en="Consultations">تأثيث </h3>
       </div>
     </section>
   </div>
