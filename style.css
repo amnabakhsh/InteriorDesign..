@@ -92,7 +92,7 @@ header {
 
 #about p {
     font-family: "Tajawal", sans-serif;
-  font-size: 21px;   /* حجم الخط */
+  font-size: 20px;   /* حجم الخط */
   line-height: 1.8;  /* مسافة بين السطور */
   color: #d7d6b9;
   text-align: center;
@@ -105,7 +105,7 @@ header {
 /* الأقسام */
 section { padding:60px 20px; min-height:auto;  font-family: "Lateef", serif;}
 #works { background: rgba(100,54,45,0.95); }
-h2 { font-size:50px; margin-bottom:15px; color:#d7d6b9;font-family: "Lateef", serif; }
+h2 { font-size:40px; margin-bottom:15px; color:#d7d6b9;font-family: "Lateef", serif; }
 p { font-size:20px; margin-bottom:25px; color:#d7d6b9; word-wrap: break-word; font-family: "Lateef", serif;}
 
 /* معرض الأعمال */
@@ -363,6 +363,7 @@ footer {
 .sub-images img.active {
   opacity: 1;
 }
+
 
 
 
