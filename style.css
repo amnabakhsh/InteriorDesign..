@@ -16,18 +16,35 @@ body { font-family: Arial, sans-serif; color:#d7d6b9; line-height:1.6; text-alig
 @keyframes splashOpenRight { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
 /* فيديو الخلفية */
-.video-bg { position: fixed; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
 
-.video-bg{
+
+.video-bg {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-bg video,
+.video-bg .poster {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-    background: black; تحسبا لو تاخر الفيديو
+  display: block;
+}
+
+/* للجوال */
+@media (max-width: 768px) {
+  .video-bg video {
+    height: 100vh; /* تأكيد أن يغطي طول الشاشة */
+    width: 100vw;  /* تأكيد أن يغطي عرض الشاشة */
+  }
 }
 
 /* افتراضيًا، خلّي الفيديو العرضي يشتغل */
@@ -47,33 +64,49 @@ body { font-family: Arial, sans-serif; color:#d7d6b9; line-height:1.6; text-alig
 
 /* الهيدر */
 header { background: rgba(100, 54, 45, 0.9); padding:15px; position: sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; }
-header .logo img { height: 65px; width:auto; object-fit:contain; }
+header .logo img { height: 75px; width:auto; object-fit:contain; }
 nav a { color:#d7d6b9; margin:0 15px; text-decoration:none; font-weight:bold; transition:0.3s; }
 nav a:hover { color:#fff; }
 
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  position: relative;
+  z-index: 1000;
+}
+
+
+
+
+
 /* الصفحة الرئيسية */
 #home { display:flex; justify-content:center; align-items:center; height:100vh; }
-#home h1 { font-size:55px; opacity:0; transform: translateY(40px); text-align:center; transition:1s ease; }
+#home h1 { font-size:60px; opacity:0; transform: translateY(40px); text-align:center; transition:1s ease;   font-family: "Amiri", serif;}
 
 /* صفحة About */
-.about-section { background: rgba(100,54,45,0.6); padding:60px 20px; text-align:center; }
+.about-section { background: rgba(100,54,45,0.6); padding:60px 20px; text-align:center;   font-family: "Lateef", serif;}
 .about-section p { max-width:800px; margin:10px auto; line-height:1.8; text-align:center; }
 
 #about p {
-  font-size: 20px;   /* حجم الخط */
+    font-family: "Tajawal", sans-serif;
+  font-size: 23px;   /* حجم الخط */
   line-height: 1.8;  /* مسافة بين السطور */
   color: #d7d6b9;
   text-align: center;
+  align-items: flex-start;
   max-width: 900px;
   margin: 0 auto 25px;
   font-weight: bold;
 }
 
 /* الأقسام */
-section { padding:60px 20px; min-height:auto; }
+section { padding:60px 20px; min-height:auto;  font-family: "Lateef", serif;}
 #works { background: rgba(100,54,45,0.95); }
-h2 { font-size:36px; margin-bottom:15px; color:#d7d6b9; }
-p { font-size:20px; margin-bottom:25px; color:#d7d6b9; word-wrap: break-word; }
+h2 { font-size:50px; margin-bottom:15px; color:#d7d6b9;font-family: "Lateef", serif; }
+p { font-size:20px; margin-bottom:25px; color:#d7d6b9; word-wrap: break-word; font-family: "Lateef", serif;}
 
 /* معرض الأعمال */
 .projects-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:15px; justify-items:center; }
@@ -119,23 +152,31 @@ p { font-size:20px; margin-bottom:25px; color:#d7d6b9; word-wrap: break-word; }
 }
 
 
-/* ---------- معرض الأعمال للشاشات الصغيرة (2 صور بجانب بعض بشكل متناوب) ---------- */
-@media(max-width: 768px){
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
 
-  /* الصور الكبيرة والصغيرة متناوبة */
-  .projects-grid .project:nth-child(odd) .main-image,
-  .projects-grid .project:nth-child(odd) .main-video {
-    grid-column: span 2; /* الصور الفردية تأخذ العمودين = كبيرة */
-  }
-  .projects-grid .project:nth-child(even) .main-image,
-  .projects-grid .project:nth-child(even) .main-video {
-    grid-column: span 1; /* الصور الزوجية = صغيرة */
-  }
+
+
+/* حاوية النقاط فوق الصورة */
+.dots-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: #fff;
 }
 
 
@@ -143,8 +184,15 @@ p { font-size:20px; margin-bottom:25px; color:#d7d6b9; word-wrap: break-word; }
 
 
 
+
+
+
+
+
+
+
 /* الفوتر */
-footer { padding:20px; font-size:14px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+footer { padding:20px; font-size:14px; display:flex; flex-direction:column; align-items:center; gap:10px; font-family: "Lateef", serif; }
 footer .socials { display:flex; justify-content:center; gap:20px; margin-bottom:10px; }
 footer .socials img { width:35px; cursor:pointer; }
 .lang-buttons button { padding:5px 10px; cursor:pointer; margin:0 5px; }
@@ -208,6 +256,7 @@ footer .socials img { width:35px; cursor:pointer; }
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: -1;
+
 }
 
 /* عنوان الخدمات */
@@ -290,41 +339,30 @@ footer {
   }
 }
 
-/* --- أزرار التنقل متجاوبة حسب الشاشة --- */
-@media (max-width: 768px) {
-  header nav {
-    display: flex;
-    flex-direction: column; /* تصير الأزرار تحت بعض */
-    align-items: center;    /* في المنتصف */
-    gap: 7px;              /* مسافة بين الأزرار */
-  }
 
-  header nav a {
-    display: block;          /* كل زر ياخذ سطر كامل */
-    width: 80%;              /* عرض الزر */
-    text-align: center;      /* نص الزر في المنتصف */
-    margin: 5px 0;           /* مسافة بسيطة فوق وتحت */
-  }
 
+.sub-images {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px; /* اختر الحجم المناسب */
+  height: 250px;
+}
+
+.sub-images img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.sub-images img.active {
+  opacity: 1;
 }
 
 
-
-/* السهم يظهر فقط على الجوال */
-@media screen and (max-width: 768px) {
-  .sub-images::after {
-    content: '→'; /* سهم يشير لليمين */
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    color: rgba(0,0,0,0.5);
-    pointer-events: none; /* لا يمنع النقر على الصور */
-  }
-
-  .sub-images {
-    position: relative; /* لازم للسهم */
-  }
-}
 
