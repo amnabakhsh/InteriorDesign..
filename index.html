@@ -8,6 +8,8 @@
 </head>
 <body>
 
+
+
 <!-- شاشة البداية -->
 <div id="splash">
   <div class="splash-left"></div>
@@ -15,34 +17,137 @@
   <img src="./works/amna logo-06.png" alt="الشعار" class="splash-logo">
 </div>
 
-<!-- فيديو الخلفية محسّن للتحميل السريع -->
-<video 
-  class="video-bg" 
-  autoplay 
-  muted 
-  loop 
-  playsinline 
-  preload="none" 
-  poster="./0ac02b20-97cc-4061-a23c-dd3dfd785803.jpeg"> <!-- صورة بديلة أثناء التحميل -->
-  <source src="./works/Customized-20251015-164252 (1).mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+
+<!-- خلفية الفيديو -->
+<div class="video-bg">
+  <img src="./0ac02b20-97cc-4061-a23c-dd3dfd785803.jpeg" alt="background" class="poster" loading="lazy">
+  <video autoplay muted loop playsinline id="bgVideo" preload="none" poster="./0ac02b20-97cc-4061-a23c-dd3dfd785803.jpeg">
+    <source src="./works/Customized-20251015-164252 (1).mp4" type="video/mp4">
+  </video>
+</div>
+
 
 <!-- فيديو للابتوب (عرضي) -->
 <video autoplay muted loop playsinline class="video-bg video-bg-landscape">
-  <source src="./works/سكن العز-Unnamed-Roaming video-20251024-020815.mp4" type="video/mp4">
+  <source src="./IMG_2632.MP4" type="video/mp4">
 </video>
 
 <!-- الهيدر -->
-<header>
-  <div class="logo"><img src="./works/amna logo-06.png" alt="الشعار"></div>
-  <nav>
-    <a href="index.html" data-ar=" الصفحة الرئيسية" data-en="Home">الصفحة الرئيسية</a>
 
-    <a href="services.html" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>موقعي</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; /* انتقال سلس */
+}
 
-  </nav>
-</header>
+.logo img {
+height: 70px; 
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:rgba(100, 54, 45, 0.9);
+  color: #d7d6b9;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: none; /* مخفية افتراضياً */
+  flex-direction: column; /* عمودي */
+  background-color: rgba(100, 54, 45, 0.9);
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+}
+
+.navbar ul li {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.navbar ul li a {
+  color: #d7d6b9;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.hamburger {
+  display: flex; 
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: #d7d6b9;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+.navbar ul.show {
+  display: flex;
+}
+
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+
+    <img src="./works/amna logo-06.png" alt="logo" style="height: 60px">
+  </div>
+  <ul>
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="services.html">خدماتنا</a></li>
+    <li><a href="#contact">تواصل معنا</a></li>
+  </ul>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+
+
+<script>
+// التحكم بأيقونة الهامبرغر
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.navbar ul');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+</script>
+
+</body>
+</html>
 
 <!-- الصفحة الرئيسية -->
 <section id="home" class="fade">
@@ -52,16 +157,15 @@
 <!-- صفحة About -->
 <section id="about" class="fade about-section">
   <h2 data-ar="لمحة شخصية" data-en="Personal Insight">لمحة شخصية</h2>
-  <p data-ar="آمنة… مصممة داخلية، بالنسبة لي التصميم ليس مجرد تنسيقٍ للألوان أو توزيعٍ للإضاءة، بل لغة عميقة تنسج علاقة بين الإنسان ومكانه، بين تفاصيله ومشاعره.
-أؤمن أن لكل بيتٍ طاقته الخاصة، ولكل زاويةٍ شعور عميق يحتاج التجسيد بالفن الهندسي. 
-ومن خلال رؤيتي التي تمزج بين الحس الجمالي والبُعد الإنساني، أصنع مساحات جمالية ملهمة ومفعمة بالحياة" data-en="Amna — Interior Designer
+  <p data-ar="آمنة… مصممة داخلية، بالنسبة لي التصميم ليس مجرد تنسيقٍ للألوان أو توزيعٍ للإضاءة، بل لغة عميقة تنسج علاقة بين الإنسان ومكانه، بين تفاصيله ومشاعره. أؤمن أن لكل بيتٍ طاقته الخاصة، ولكل زاويةٍ شعور عميق يحتاج التجسيد بالفن الهندسي، ومن خلال رؤيتي التي تمزج بين الحس الجمالي والبُعد الإنساني، أصنع مساحات جمالية ملهمة ومفعمة بالحياة"
+data-en="Amna — Interior Designer
 For me, design is not merely about color coordination or lighting arrangement; it is a profound language that weaves a connection between people and their spaces, between details and emotions.
 I believe every home has its own energy, and every corner holds a deep feeling that deserves to be expressed through artistic design.
-Through my vision—where aesthetic sensitivity meets human depth—I create inspiring, vibrant spaces filled with life and beauty">
+Through my vision—where aesthetic sensitivity meets human depth—I create inspiring, vibrant spaces filled with life and beauty.">
     نعمل دائمًا على تقديم أفكار مبتكرة تتماشى مع أحدث صيحات التصميم الداخلي.
   </p>
   <h2 data-ar="كيف بدأت الحكاية؟" data-en="How It All Started">كيف بدأت الحكاية؟</h2>
-  <p data-ar="بدأت الحكاية من شغفي لرؤية كل شيء جميل بجانب حبي لدفء العائلات وملاذ البيوت! . ومن هنا اندمجت كل الرغبات في هدف واحد وهو خلق روح المكان للديارِ وتأثيثها بجمالٍ يحتضن الروح ومتطلبات الفرد وعواطفه! أن أشكل شكلًا هندسيًا وأمزجُ ألوانًا بألوانٍ وإضاءاتٍ وأركان تجسّد بشكلها شعور الفرد وطاقته التي يود أن يسكن إليها" data-en="My story began with a passion for witnessing beauty in every detail, alongside a love for the warmth of families and the comfort of homes. From this, all my desires merged into a single goal: to create the soul of a space, furnishing it with beauty that embraces both the spirit and the individual’s emotions. I shape geometric forms, blend colors with colors, and design lighting and corners that reflect the feelings and energy of those who inhabit the space">
+  <p data-ar="بدأت الحكاية من شغفي لرؤية كل شيء جميل بجانب حبي لدفء العائلات وملاذ البيوت! ومن هنا اندمجت كل الرغبات في هدف واحد وهو خلق روح المكان للديارِ وتأثيثها بجمالٍ يحتضن الروح ومتطلبات الفرد وعواطفه! أن أشكل شكلًا هندسيًا وأمزجُ ألوانًا بألوانٍ وإضاءاتٍ وأركان تجسّد بشكلها شعور الفرد وطاقته التي يود أن يسكن إليها" data-en="My story began with a passion for witnessing beauty in every detail, alongside a love for the warmth of families and the comfort of homes. From this, all my desires merged into a single goal: to create the soul of a space, furnishing it with beauty that embraces both the spirit and the individual’s emotions. I shape geometric forms, blend colors with colors, and design lighting and corners that reflect the feelings and energy of those who inhabit the space">
     نعمل دائمًا على تقديم أفكار مبتكرة تتماشى مع أحدث صيحات التصميم الداخلي.
   </p>
  
@@ -72,7 +176,10 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
   <h2 data-ar="معرض التصاميم" data-en="Design Gallery">الأعمال</h2>
   <div class="projects-grid">
 
-    <!-- المشروع 1 -->
+
+
+
+  <!-- المشروع 1 -->
     <div class="project">
       <img src="./works/work1-1.jpg.jfif" class="main-image" alt="مشروع 1">
       <div class="project-info" data-ar="تصميم يجمع بين خامات طبيعية كالأخشاب والجلد مع إطلالات زجاجية على الحديقة الخارجية، ليخلق تواصلاً بين الداخل والخارج ويعزز الإحساس بالاتساع والهدوء
@@ -81,14 +188,17 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
       </div>
       <div class="sub-images">
         <button class="prev">&lt;</button>
+       
         <img src="./works/work1-1.jpg.jfif" alt="عمل 1 - صورة 1" class="active">
         <img src="./works/work1-2.jpg.jfif" alt="عمل 1 - صورة 2">
         <img src="./works/work1-3.jpg.jfif" alt="عمل 1 - صورة 3">
         <img src="./works/work1-4.jpg.jfif" alt="عمل 1 - صورة 4">
         <img src="./works/work1-5.jpg.jfif" alt="عمل 1 - صورة 5">
         <img src="./works/work1-6.jfif" alt="عمل 1 - صورة 6">
-        <button class="next">&gt;</button>
       </div>
+        
+    <div class="dots-container"></div>
+      
     </div>
 
     <!-- المشروع 2 (مع فيديو) -->
@@ -101,17 +211,22 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
     </div>
 
     <!-- المشروع 3 -->
+
     <div class="project">
       <img src="./works/work3.jfif" class="main-image" alt="مشروع 3">
       <div class="project-info" data-ar=" غرفة نوم فاخرة وهادئة، بألوان ناعمة وتفاصيل دقيقة، تبرز الأناقة العصرية والراحة في مساحة متكاملة " data-en="A luxurious and peaceful bedroom with soft colors and delicate details, highlighting modern elegance and comfort in a cohesive space">وصف مختصر لمشروع 3</div>
       <div class="sub-images">
         <button class="prev">&lt;</button>
+
         <img src="./works/work3.jfif" alt="عمل 3 - صورة 1" class="active">
         <img src="./works/work3-1.jfif" alt="عمل 3 - صورة 2">
         <img src="./works/work3-2.jfif" alt="عمل 3 - صورة 3">
-        <button class="next">&gt;</button>
       </div>
+
+           <div class="dots-container"></div>
+
     </div>
+ 
 
      <!-- المشروع 4 -->
     <div class="project">
@@ -123,8 +238,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work4-1.jfif" alt="عمل 4 - صورة 2">
         <img src="./works/work4-2.jfif" alt="عمل 4 - صورة 3">
         <img src="./works/work4-3.jfif" alt="عمل 4 - صورة 4">
-        <button class="next">&gt;</button>
+      
       </div>
+      <div class="dots-container"></div>
     </div>
 
     <!-- المشروع 5 -->
@@ -137,8 +253,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work5.jfif" alt="عمل 5 - صورة 1" class="active">
         <img src="./works/work5-1.jfif" alt="عمل 5 - صورة 2">
         <img src="./works/work5-2.jfif" alt="عمل 5 - صورة 3">
-        <button class="next">&gt;</button>
+        
       </div>
+      <div class="dots-container"></div>
     </div>
 
     <!-- المشروع 6 -->
@@ -153,8 +270,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work8-2.jfif" alt="عمل 6 - صورة 3">
         <img src="./works/work8-3.jfif" alt="عمل 6 - صورة 4">
         <img src="./works/work8-4.jfif" alt="عمل 6 - صورة 5">
-        <button class="next">&gt;</button>
+       
       </div>
+      <div class="dots-container"></div>
     </div>
 
      <!-- المشروع 7 -->
@@ -168,8 +286,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work7-2.jfif" alt="عمل 7 - صورة 3">
         <img src="./works/work7-3.jfif" alt="عمل 7 - صورة 4">
         <img src="./works/work7-4.jfif" alt="عمل 7 - صورة 5">
-        <button class="next">&gt;</button>
+        
       </div>
+      <div class="dots-container"></div>
     </div>
 
     <!-- المشروع 8 -->
@@ -181,8 +300,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work9.jfif" alt="عمل 8 - صورة 1" class="active">
         <img src="./works/work9-1.jfif" alt="عمل 8 - صورة 2">
         <img src="./works/work9-2.jfif" alt="عمل 8 - صورة 3">
-        <button class="next">&gt;</button>
+      
       </div>
+      <div class="dots-container"></div>
     </div>
 
    <!-- المشروع 9 -->
@@ -204,8 +324,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work10-13.jfif" alt="عمل 9 - صورة 11" class="active">
         <img src="./works/work10-14.jfif" alt="عمل 9 - صورة 12">
         <img src="./works/work10-15.jfif" alt="1عمل 9 - صورة 3">
-        <button class="next">&gt;</button>
+       
       </div>
+      <div class="dots-container"></div>
     </div>
 
    <!-- المشروع 10 -->
@@ -216,8 +337,9 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <button class="prev">&lt;</button>
         <img src="./works/work2.jfif" alt="عمل 10 - صورة 1" class="active">
         <img src="./works/work2-1.jfif" alt="عمل 10 - صورة 2">
-        <button class="next">&gt;</button>
+        
       </div>
+      <div class="dots-container"></div>
     </div> 
 
      <!-- المشروع 11 -->
@@ -228,11 +350,11 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <button class="prev">&lt;</button>
         <img src="./works/work11.jfif" alt="عمل 11 - صورة 1" class="active">
         <img src="./works/work11-1.jfif" alt="عمل 11 - صورة 2">
-        <img src="./works/work11-2.jfif" alt="عمل 11 - صورة 3">
-        <img src="./works/work11-3.jfif" alt="عمل 11 - صورة 4">
-          <img src="./works/work11-4.jfif" alt="عمل 11 - صورة 5">
-        <button class="next">&gt;</button>
+        
+        
+       
       </div>
+      <div class="dots-container"></div>
     </div>
 
      <!-- المشروع 12 -->
@@ -244,14 +366,30 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
         <img src="./works/work2-2.jfif" alt="عمل 12 - صورة 1" class="active">
         <img src="./works/work2-3.jfif" alt="عمل 12 - صورة 2">
         <img src="./works/work2-4.jfif" alt="عمل 12 - صورة 3">
-        <button class="next">&gt;</button>
+       
       </div>
+      <div class="dots-container"></div>
     </div>
 
-
-  </div>
+ 
 </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 <!-- Modal للعرض المركزي (يدعم صورة أو فيديو) -->
 <div id="gallery-modal" class="modal" aria-hidden="true" role="dialog">
   <button class="modal-close" aria-label="close">&times;</button>
@@ -278,6 +416,7 @@ Through my vision—where aesthetic sensitivity meets human depth—I create ins
 </footer>
 
 <script src="script.js"></script>
-</body>
 
+
+</body>
 </html>
