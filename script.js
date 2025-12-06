@@ -329,25 +329,180 @@ function fixVideosOnMobile() {
   }
 }
 
+
+
+
+
+
 window.addEventListener("resize", fixVideosOnMobile);
 fixVideosOnMobile();
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const videos = document.querySelectorAll('video');
-  videos.forEach(video => {
-    video.muted = true;
-    video.playsInline = true;
-    let playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // إذا المتصفح رفض التشغيل التلقائي، ينتظر أول تفاعل من المستخدم
-        document.body.addEventListener('touchstart', () => video.play(), { once: true });
-        document.body.addEventListener('click', () => video.play(), { once: true });
-      });
-    }
-  });
+
+
+
+
+window.addEventListener("load", () => {
+  const video = document.getElementById("bgVideo");
+  const poster = document.querySelector(".poster");
+
+  // تحميل وتشغيل الفيديو بعد ثانيتين
+  setTimeout(() => {
+    video.style.display = "block";
+    poster.style.display = "none";
+    video.load();
+  }, 2000);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const splash = document.getElementById("splash");
+
+  // إذا الزيارة الأولى في الجلسة، أظهر الشاشة
+  if (!sessionStorage.getItem("visited")) {
+    splash.style.display = "flex"; // تظهر الشاشة
+    setTimeout(() => {
+      splash.style.display = "none"; // بعد ثواني تختفي
+      sessionStorage.setItem("visited", "true"); // تخزين الزيارة
+    }, 2000); // مدة الشاشة بالمللي ثانية
+  } else {
+    // إذا زار المستخدم من قبل، اخفي الشاشة مباشرة
+    splash.style.display = "none";
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.querySelectorAll('.project').forEach(project => {
+  const mainImage = project.querySelector('.main-image');
+  const subImages = project.querySelectorAll('.sub-images img');
+  const dotsContainer = project.querySelector('.dots-container');
+
+  if(!mainImage || subImages.length === 0) return;
+
+  // إنشاء النقاط
+  subImages.forEach((img, index) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if(index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      showSlide(index);
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.dot');
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    subImages.forEach(img => img.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    subImages[index].classList.add('active');
+    dots[index].classList.add('active');
+    mainImage.src = subImages[index].src;
+    currentIndex = index;
+  }
+
+  // تغيير تلقائي كل 3 ثواني
+  setInterval(() => {
+    let nextIndex = currentIndex + 1;
+    if(nextIndex >= subImages.length) nextIndex = 0;
+    showSlide(nextIndex);
+  }, 3000);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.querySelectorAll('.project').forEach(project => {
+  const subImages = project.querySelectorAll('.sub-images img');
+  const dotsContainer = project.querySelector('.dots-container');
+
+  if (!dotsContainer) return; // إذا المشروع ما عنده sub-images
+
+  // تنظيف أي نقاط قديمة
+  dotsContainer.innerHTML = '';
+
+  subImages.forEach((img, index) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active'); // أول صورة نشطة
+    dotsContainer.appendChild(dot);
+
+    // عند الضغط على النقطة، تعرض الصورة المناسبة
+    dot.addEventListener('click', () => {
+      subImages.forEach(img => img.classList.remove('active'));
+      dot.parentElement.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+
+      subImages[index].classList.add('active');
+      dot.classList.add('active');
+    });
+  });
+
+  // تغيير الصور تلقائيًا كل 3 ثواني
+  let current = 0;
+  setInterval(() => {
+    subImages[current].classList.remove('active');
+    dotsContainer.querySelectorAll('.dot')[current].classList.remove('active');
+
+    current = (current + 1) % subImages.length;
+
+    subImages[current].classList.add('active');
+    dotsContainer.querySelectorAll('.dot')[current].classList.add('active');
+  }, 3000);
+});
+
+
+
+
+
+  
 
 
 
